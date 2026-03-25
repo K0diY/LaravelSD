@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Admin\ConferenceController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -15,4 +17,15 @@ Route::prefix('client')->group(function () {
 Route::prefix('employee')->group(function () {
     Route::get('/conferences', [EmployeeController::class, 'index']);
     Route::get('/conferences/{id}', [EmployeeController::class, 'show']);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [ConferenceController::class, 'adminIndex']);
+
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users/{id}/edit', [UserController::class, 'edit']);
+
+    Route::get('/conferences', [ConferenceController::class, 'index']);
+    Route::get('/conferences/create', [ConferenceController::class, 'create']);
+    Route::get('/conferences/{id}/edit', [ConferenceController::class, 'edit']);
 });
