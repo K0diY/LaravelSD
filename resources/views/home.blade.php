@@ -1,9 +1,19 @@
-<h1>Pagrindinis puslapis</h1>
+@extends('layouts.app')
 
-<ul>
-    <li><a href="/client/conferences">Kliento posistemis</a></li>
-    <li><a href="/employee/conferences">Darbuotojo posistemis</a></li>
-    <li><a href="/admin">Administratoriaus posistemis</a></li>
-    <li><a href="#">Darbuotojas (bus vėliau)</a></li>
-    <li><a href="#">Administratorius (bus vėliau)</a></li>
-</ul>
+@section('content')
+    <h1 class="mb-4">{{ __('messages.home') }}</h1>
+
+    <div class="list-group">
+        <a href="/client/conferences" class="list-group-item list-group-item-action">
+            {{ __('messages.client') }}
+        </a>
+
+        <a href="/employee/conferences" class="list-group-item list-group-item-action">
+            {{ __('messages.employee') }}
+        </a>
+
+        <a href="/admin" class="list-group-item list-group-item-action">
+            {{ __('messages.admin') }}
+        </a>
+    </div>
+@endsection

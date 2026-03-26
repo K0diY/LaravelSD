@@ -42,6 +42,6 @@ class UserController extends Controller
 
     public function update(UserRequest $request, $id)
     {
-        return redirect('/admin/users')->with('success', 'User updated successfully.');
+        return redirect('/admin/users')->with('success', __('messages.user_updated'));
     }
 }

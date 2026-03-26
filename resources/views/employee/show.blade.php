@@ -1,15 +1,23 @@
-<h1>{{ $conference['title'] }}</h1>
+@extends('layouts.app')
 
-<p>{{ $conference['description'] }}</p>
-<p>Data: {{ $conference['date'] }}</p>
-<p>Vieta: {{ $conference['location'] }}</p>
+@section('content')
+    <h1 class="mb-4">{{ $conference['title'] }}</h1>
 
-<h3>Užsiregistravę klientai</h3>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>{{ __('messages.description') }}:</strong> {{ $conference['description'] }}</p>
+            <p><strong>{{ __('messages.date') }}:</strong> {{ $conference['date'] }}</p>
+            <p><strong>{{ __('messages.location') }}:</strong> {{ $conference['location'] }}</p>
+        </div>
+    </div>
 
-<ul>
-@foreach($participants as $p)
-    <li>{{ $p }}</li>
-@endforeach
-</ul>
+    <h3 class="mb-3">{{ __('messages.participants') }}</h3>
 
-<a href="/employee/conferences">Atgal</a>
+    <ul class="list-group mb-3">
+        @foreach($participants as $p)
+            <li class="list-group-item">{{ $p }}</li>
+        @endforeach
+    </ul>
+
+    <a href="/employee/conferences" class="btn btn-secondary">{{ __('messages.back') }}</a>
+@endsection

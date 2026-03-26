@@ -41,7 +41,7 @@ class ConferenceController extends Controller
 
     public function store(ConferenceRequest $request)
     {
-        return redirect('/admin/conferences')->with('success', 'Conference created successfully.');
+        return redirect('/admin/conferences')->with('success', __('messages.conference_created'));
     }
 
     public function edit($id)
@@ -59,11 +59,11 @@ class ConferenceController extends Controller
 
     public function update(ConferenceRequest $request, $id)
     {
-        return redirect('/admin/conferences')->with('success', 'Conference updated successfully.');
+        return redirect('/admin/conferences')->with('success', __('messages.conference_updated'));
     }
 
     public function destroy($id)
     {
-        return redirect('/admin/conferences')->with('success', 'Conference deleted successfully.');
+        return redirect('/admin/conferences')->with('success', __('messages.conference_deleted'));
     }
 }

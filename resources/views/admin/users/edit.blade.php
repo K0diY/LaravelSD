@@ -1,28 +1,39 @@
-<h1>Redaguoti naudotoją</h1>
+@extends('layouts.app')
 
-<form method="POST" action="/admin/users/{{ $user['id'] }}">
-    @csrf
+@section('content')
+    <h1 class="mb-4">{{ __('messages.edit_user') }}</h1>
 
-    <input type="text" name="name" value="{{ $user['name'] }}">
-    @error('name')
-        <div>{{ $message }}</div>
-    @enderror
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="/admin/users/{{ $user['id'] }}">
+                @csrf
 
-    <br><br>
+                <div class="mb-3">
+                    <label class="form-label">{{ __('messages.name') }}</label>
+                    <input type="text" name="name" class="form-control" value="{{ $user['name'] }}">
+                    @error('name')
+                        <div class="text-danger mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
 
-    <input type="text" name="surname" value="{{ $user['surname'] }}">
-    @error('surname')
-        <div>{{ $message }}</div>
-    @enderror
+                <div class="mb-3">
+                    <label class="form-label">{{ __('messages.surname') }}</label>
+                    <input type="text" name="surname" class="form-control" value="{{ $user['surname'] }}">
+                    @error('surname')
+                        <div class="text-danger mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
 
-    <br><br>
+                <div class="mb-3">
+                    <label class="form-label">{{ __('messages.email') }}</label>
+                    <input type="email" name="email" class="form-control" value="{{ $user['email'] }}">
+                    @error('email')
+                        <div class="text-danger mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
 
-    <input type="email" name="email" value="{{ $user['email'] }}">
-    @error('email')
-        <div>{{ $message }}</div>
-    @enderror
-
-    <br><br>
-
-    <button type="submit">Išsaugoti</button>
-</form>
+                <button type="submit" class="btn btn-success">{{ __('messages.save') }}</button>
+            </form>
+        </div>
+    </div>
+@endsection
